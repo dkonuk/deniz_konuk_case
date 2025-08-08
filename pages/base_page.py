@@ -20,7 +20,6 @@ class BasePage:
         try:
             self.find_element(self.cookies_dialogue)
             self.click_element(self.accept_cookies)
-            print("Cookies accepted")
         except:
             pass # Cookie dialog is not present or not clickable
 

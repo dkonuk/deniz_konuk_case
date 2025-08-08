@@ -8,11 +8,6 @@
 pip install -r requirements.txt
 ```
 
-2. Make sure you have the appropriate WebDriver for your browser:
-   - For Chrome: ChromeDriver
-   - For Firefox: GeckoDriver
-   - For Edge: EdgeDriver
-
 ## Running Tests
 
 To run all tests:
@@ -31,5 +26,15 @@ To run tests with verbose output:
 
 ```bash
 pytest -v
+```
+To run tests with specific browser
+
+```bash
+pytest tests/ -k "chrome" -v
+```
+or
+
+```bash
+pytest tests/ -k "firefox" -v
 ```
 
