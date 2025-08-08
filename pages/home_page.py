@@ -1,4 +1,4 @@
-from selenium.common import TimeoutException, NoSuchElementException
+from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from pages.careersPage import CareersPage
@@ -15,10 +15,6 @@ class HomePage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
         self.driver.get(Config.BASE_URL)
-
-    def get_title(self):
-        return self.driver.title
-
 
     def check_if_the_page_loaded(self):
         try:

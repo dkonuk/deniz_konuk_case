@@ -2,7 +2,6 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
 from config import Config
 import time
 
@@ -26,9 +25,6 @@ class BasePage:
     def find_element(self, element_locator):
         return self.wait.until(EC.presence_of_element_located(element_locator))
 
-    def click(self, element_locator):
-        self.click_element(element_locator)
-
     def check_if_element_is_visible(self, element_locator):
         return self.wait.until(EC.visibility_of_element_located(element_locator))
 
@@ -38,10 +34,6 @@ class BasePage:
     def click_element(self, element_locator):
         element = self.find_clickable_element(element_locator)
         element.click()
-
-    def get_text_from_element(self, element_locator):
-        element_to_get_text = self.find_element(element_locator)
-        return element_to_get_text.text
 
     def scroll_to_element(self, element_locator):
         element = self.find_element(element_locator)
@@ -56,7 +48,6 @@ class BasePage:
         parent_locator = self.find_element(parent_element)
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', behavior: 'smooth'});",parent_locator)
         time.sleep(1)
-
         actions.move_to_element(parent_locator).perform()
         child = parent_locator.find_element(*child_locator)
         child.click()
@@ -68,11 +59,8 @@ class BasePage:
         # filterin_option : What is the dropdown menu used to filter (Location, department etc.)
         # Open dropdown with JavaScript
         self.driver.execute_script(f"document.querySelector('{dropdown_menu_locator}').click();")
-
         # Wait a moment for dropdown to render
         time.sleep(1)
         # Use Select2 API to set the value directly
-        self.driver.execute_script(f"""
-                $('#filter-by-{filtering_option}').val('{dropdown_option}').trigger('change');
-            """)
+        self.driver.execute_script(f"""$('#filter-by-{filtering_option}').val('{dropdown_option}').trigger('change');""")
 

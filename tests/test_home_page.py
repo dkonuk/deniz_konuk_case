@@ -14,7 +14,7 @@ class TestHomePage:
         careers_page = home_page.click_careers_link()
         assert careers_page.check_if_teams_block_loaded(), "Teams block not found on Careers page"
         assert careers_page.check_if_locations_block_loaded(), "Careers block not found on Careers page"
-        assert careers_page.check_if_life_at_insider_block_loaded(), "Locations block not found on Careers page"
+        assert careers_page.check_if_life_at_insider_block_loaded(), "Life at Insider block not found on Careers page"
 
 
 

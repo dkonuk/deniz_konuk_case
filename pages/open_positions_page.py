@@ -54,9 +54,7 @@ class OpenPositionsPage(BasePage):
         # Refreshing elements in case they became stale
         parent_element = self.find_element(self.jobs_listing)
         job_cards = parent_element.find_elements(By.CSS_SELECTOR, "div.position-list-item")
-
         jobs_data = []
-
         # Loop and extract details
         for card in job_cards:
             title = card.find_element(By.CSS_SELECTOR, ".position-title").text

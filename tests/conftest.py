@@ -26,7 +26,6 @@ def fixtureSetup(request):
         chrome_options.add_argument("--disable-renderer-backgrounding")
         chrome_options.add_argument("--disable-background-timer-throttling")
         chrome_options.add_argument("--disable-ipc-flooding-protection")
-        #chrome_options.add_argument("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Chrome/120.0.0.0")
         driver = webdriver.Chrome(options=chrome_options)
         driver.set_window_size(1920, 1080)
     elif request.param == "firefox":
